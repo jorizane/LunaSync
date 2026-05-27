@@ -1,0 +1,16 @@
+services:
+  database:
+    image: postgres:16-alpine
+    container_name: lunasync-database
+    environment:
+      POSTGRES_DB: lunasync
+      POSTGRES_USER: lunasync
+      POSTGRES_PASSWORD: lunasync
+    ports:
+      - "5432:5432"
+    volumes:
+      - lunasync-postgres-data:/var/lib/postgresql/data
+
+volumes:
+  lunasync-postgres-data:
+

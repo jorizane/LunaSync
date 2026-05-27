@@ -1,0 +1,30 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Node / Angular
+node_modules/
+dist/
+.angular/
+
+# Android build output
+*.apk
+*.aab
+apps/frontend/android/app/build/
+apps/frontend/android/.gradle/
+
+# Local editor files
+.DS_Store
+.idea/
+.vscode/
+
