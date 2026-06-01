@@ -13,21 +13,25 @@
         <input type="date" name="habitDate" [(ngModel)]="habitDate" required />
       </label>
 
-      <button type="submit" [disabled]="isSaving()">
-        {{ isSaving() ? 'Speichere...' : 'Habit speichern' }}
+      <button type="submit" [disabled]="(isSaving$ | async) ?? false">
+        {{ ((isSaving$ | async) ?? false) ? 'Speichere...' : 'Habit speichern' }}
       </button>
     </form>
 
-    @if (errorMessage()) {
-      <p class="error">{{ errorMessage() }}</p>
+    @if ((errorMessage$ | async); as errorMessage) {
+      @if (errorMessage) {
+        <p class="error">{{ errorMessage }}</p>
+      }
     }
 
     <ul class="habit-list">
-      @for (habit of habits(); track habit.id) {
-        <li>
-          <span class="habit-name">{{ habit.name }}</span>
-          <span class="habit-date">{{ habit.habit_date }}</span>
-        </li>
+      @if ((habits$ | async); as habits) {
+        @for (habit of habits; track habit.id) {
+          <li>
+            <span class="habit-name">{{ habit.name }}</span>
+            <span class="habit-date">{{ habit.habit_date }}</span>
+          </li>
+        }
       }
     </ul>
   </section>
