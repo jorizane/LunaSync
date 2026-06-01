@@ -1,38 +1,4 @@
-<main class="page">
-  <section class="container">
-    <h1>Habit Tracker</h1>
-
-    <form class="habit-form" (ngSubmit)="saveHabit()">
-      <label>
-        Name
-        <input type="text" name="name" [(ngModel)]="name" required maxlength="120" />
-      </label>
-
-      <label>
-        Datum
-        <input type="date" name="habitDate" [(ngModel)]="habitDate" required />
-      </label>
-
-      <button type="submit" [disabled]="(isSaving$ | async) ?? false">
-        {{ ((isSaving$ | async) ?? false) ? 'Speichere...' : 'Habit speichern' }}
-      </button>
-    </form>
-
-    @if ((errorMessage$ | async); as errorMessage) {
-      @if (errorMessage) {
-        <p class="error">{{ errorMessage }}</p>
-      }
-    }
-
-    <ul class="habit-list">
-      @if ((habits$ | async); as habits) {
-        @for (habit of habits; track habit.id) {
-          <li>
-            <span class="habit-name">{{ habit.name }}</span>
-            <span class="habit-date">{{ habit.habit_date }}</span>
-          </li>
-        }
-      }
-    </ul>
-  </section>
+<main class="page split-page">
+  <app-ngrx-habits></app-ngrx-habits>
+  <app-signal-habits></app-signal-habits>
 </main>

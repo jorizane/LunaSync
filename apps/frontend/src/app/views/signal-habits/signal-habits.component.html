@@ -1,0 +1,19 @@
+<section class="container">
+  <h1>Habit Tracker (Signals)</h1>
+
+  <form class="habit-form" (ngSubmit)="saveHabit()">
+    <label>Name<input type="text" name="name" [(ngModel)]="name" required maxlength="120" /></label>
+    <label>Datum<input type="date" name="habitDate" [(ngModel)]="habitDate" required /></label>
+    <button type="submit" [disabled]="signalStore.isSaving()">{{ signalStore.isSaving() ? 'Speichere...' : 'Habit speichern' }}</button>
+  </form>
+
+  @if (signalStore.errorMessage()) {
+    <p class="error">{{ signalStore.errorMessage() }}</p>
+  }
+
+  <ul class="habit-list">
+    @for (habit of signalStore.habits(); track habit.id) {
+      <li><span class="habit-name">{{ habit.name }}</span><span class="habit-date">{{ habit.habit_date }}</span></li>
+    }
+  </ul>
+</section>

@@ -6,7 +6,7 @@ import { provideEffects } from '@ngrx/effects';
 
 import { routes } from './app.routes';
 import { habitsFeature } from './habits/store/habit.reducer';
-import { createHabitEffect, loadHabitsEffect } from './habits/store/habit.effects';
+import { createHabitEffect, loadHabitsEffect, syncLoadHabitsEffect } from './habits/store/habit.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,6 +14,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(),
     provideStore({ [habitsFeature.name]: habitsFeature.reducer }),
-    provideEffects({ loadHabitsEffect, createHabitEffect }),
+    provideEffects({ loadHabitsEffect, createHabitEffect, syncLoadHabitsEffect }),
   ]
 };

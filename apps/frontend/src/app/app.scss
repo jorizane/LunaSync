@@ -5,19 +5,34 @@
 
 .page {
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
   padding: 24px;
   background: #f5f7fa;
 }
 
+.split-page {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1100px) {
+  .split-page {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
 .container {
   width: 100%;
-  max-width: 720px;
+  border: 1px solid #d8dbe2;
+  border-radius: 8px;
+  background: #fff;
+  padding: 16px;
 }
 
 h1 {
   margin: 0 0 16px;
+  font-size: 22px;
 }
 
 .habit-form {
@@ -26,60 +41,12 @@ h1 {
   margin-bottom: 20px;
 }
 
-label {
-  display: grid;
-  gap: 6px;
-  font-weight: 600;
-}
-
-input {
-  padding: 8px 10px;
-  border: 1px solid #c6c6c6;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-button {
-  width: fit-content;
-  padding: 10px 14px;
-  border: none;
-  border-radius: 6px;
-  background: #2a66e4;
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-button:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.error {
-  color: #c62828;
-}
-
-.habit-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 8px;
-}
-
-.habit-list li {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  border: 1px solid #d8dbe2;
-  border-radius: 6px;
-  background: #fff;
-}
-
-.habit-name {
-  font-weight: 600;
-}
-
-.habit-date {
-  color: #555;
-}
+label { display: grid; gap: 6px; font-weight: 600; }
+input { padding: 8px 10px; border: 1px solid #c6c6c6; border-radius: 6px; font-size: 14px; }
+button { width: fit-content; padding: 10px 14px; border: none; border-radius: 6px; background: #2a66e4; color: #fff; font-weight: 600; cursor: pointer; }
+button:disabled { opacity: 0.7; cursor: not-allowed; }
+.error { color: #c62828; }
+.habit-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.habit-list li { display: flex; justify-content: space-between; padding: 10px; border: 1px solid #d8dbe2; border-radius: 6px; background: #fff; }
+.habit-name { font-weight: 600; }
+.habit-date { color: #555; }
