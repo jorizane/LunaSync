@@ -4,12 +4,6 @@ FastAPI backend for LunaSync.
 
 ## Development
 
-Start PostgreSQL from the repository root:
-
-```bash
-docker compose up -d database
-```
-
 Install the backend dependencies from `apps/backend`:
 
 ```bash
@@ -18,7 +12,7 @@ source .venv/bin/activate
 pip install -e ".[dev]"
 ```
 
-Run the API from `apps/backend`:
+Run the API from `apps/backend` (uses local SQLite by default):
 
 ```bash
 uvicorn app.main:app --reload
@@ -36,3 +30,13 @@ Available starter endpoints:
 
 The first API module is `habits`. It is split into small files for models, schemas,
 repository access, service logic, routing, and utilities.
+
+Use PostgreSQL instead (optional):
+
+```bash
+cp .env.example .env
+# set DATABASE_URL to postgresql+psycopg://lunasync:lunasync@localhost:5432/lunasync
+cd ../..
+docker compose up -d database
+cd apps/backend
+```

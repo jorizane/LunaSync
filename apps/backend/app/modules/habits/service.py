@@ -20,7 +20,7 @@ class HabitService:
         habits = self.habit_repository.list_active_habits()
         return [self._build_today_habit_response(habit, today) for habit in habits]
 
-    def create_habit(self, name: str) -> Habit:
+    def create_habit(self, name: str, habit_date: date) -> Habit:
         normalized_name = normalize_habit_name(name)
         if not normalized_name:
             raise HTTPException(
@@ -28,7 +28,7 @@ class HabitService:
                 detail="Habit name must not be empty.",
             )
 
-        return self.habit_repository.create_habit(normalized_name)
+        return self.habit_repository.create_habit(normalized_name, habit_date)
 
     def update_habit(self, habit_id: str, name: str) -> Habit:
         habit = self._get_active_habit_or_raise(habit_id)

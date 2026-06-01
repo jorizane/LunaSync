@@ -17,8 +17,8 @@ class HabitRepository:
     def get_habit_by_id(self, habit_id: str) -> Habit | None:
         return self.database_session.get(Habit, habit_id)
 
-    def create_habit(self, name: str) -> Habit:
-        habit = Habit(name=name)
+    def create_habit(self, name: str, habit_date: date) -> Habit:
+        habit = Habit(name=name, habit_date=habit_date)
         self.database_session.add(habit)
         self.database_session.commit()
         self.database_session.refresh(habit)

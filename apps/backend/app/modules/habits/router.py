@@ -35,7 +35,7 @@ def list_habits(habit_service: HabitServiceDependency):
 
 @router.post("", response_model=HabitResponse, status_code=201)
 def create_habit(request: CreateHabitRequest, habit_service: HabitServiceDependency):
-    return habit_service.create_habit(request.name)
+    return habit_service.create_habit(request.name, request.habit_date)
 
 
 @router.get("/today", response_model=list[TodayHabitResponse])
